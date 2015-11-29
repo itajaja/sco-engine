@@ -8,11 +8,6 @@ export interface Turn {
   playerId: string;
 
   /**
-   * references to Game.id
-   */
-  gameId: string;
-
-  /**
    * turn number of the actions
    */
   turnNumber: number;
