@@ -4,7 +4,7 @@ var path = require('path')
 var TARGET = process.env.npm_lifecycle_event
 process.env.BABEL_ENV = TARGET
 
-var APP_PATH = path.resolve(__dirname, 'typescript.webpack.js')
+var APP_PATH = path.resolve(__dirname, 'src/index.ts')
 var BUILD_PATH = path.resolve(__dirname, 'lib')
 
 module.exports = {

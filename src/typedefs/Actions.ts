@@ -1,73 +1,71 @@
-module Sco.Model {
+/**
+ * represent the set of action of a specific turn of a game
+ */
+export interface Turn {
   /**
-   * represent the set of action of a specific turn of a game
+   * references to Player.id
    */
-  export interface Turn {
-    /**
-     * references to Player.id
-     */
-    playerId: string;
-
-    /**
-     * references to Game.id
-     */
-    gameId: string;
-
-    /**
-     * turn number of the actions
-     */
-    turnNumber: number;
-
-    /**
-     * the list of movement
-     */
-    movements: MovementAction[];
-
-    /**
-     * The list of productions
-     */
-    productions: ProductionAction[];
-  }
+  playerId: string;
 
   /**
-   * represents an action to build something
+   * references to Game.id
    */
-  export interface ProductionAction {
-    /**
-     * the type to build. References Asset.id
-     */
-    targetType: string;
-
-    /**
-     * the location where to produce to (if applicatble)
-     */
-    targetLocation: string;
-  }
+  gameId: string;
 
   /**
-   * An action to interact with the market
+   * turn number of the actions
    */
-  export interface MarketAction {
-    // TODO TBD
-  }
+  turnNumber: number;
 
   /**
-   * an action to move units
+   * the list of movement
    */
-  export interface MovementAction {
-    /**
-     * the unit to move. references Gamestate.UnitsState.Id
-     */
-    unit: string;
+  movements: MovementAction[];
 
-    /**
-     * the path to follow. Each element references Cell.id
-     */
-    path: string[];
+  /**
+   * The list of productions
+   */
+  productions: ProductionAction[];
+}
 
-    /**
-     * the speed used to reach the destination
-     */
-    speed: number;
-  }
+/**
+ * represents an action to build something
+ */
+export interface ProductionAction {
+  /**
+   * the type to build. References Asset.id
+   */
+  targetType: string;
+
+  /**
+   * the location where to produce to (if applicatble)
+   */
+  targetLocation: string;
+}
+
+/**
+ * An action to interact with the market
+ */
+export interface MarketAction {
+  // TODO TBD
+}
+
+/**
+ * an action to move units
+ */
+export interface MovementAction {
+  /**
+   * the unit to move. references Gamestate.UnitsState.Id
+   */
+  unit: string;
+
+  /**
+   * the path to follow. Each element references Cell.id
+   */
+  path: string[];
+
+  /**
+   * the speed used to reach the destination
+   */
+  speed: number;
 }

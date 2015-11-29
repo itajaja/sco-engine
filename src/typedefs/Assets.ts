@@ -1,19 +1,18 @@
-module Sco.Model {
+import { Resources } from 'GameState';
 
-  /**
-   * represent an abstract base asset
-   */
-  export interface AssetBase {
+/**
+ * represent an abstract base asset
+ */
+export interface AssetBase {
     /**
      * represent the tech requirements for producing the assets (if any)
      */
     techRequirements?: string[];
 
     /**
-     * the amount of resources used to produce the asset. The key is the
-     * Resource id and the value is the amount
+     * the amount of resources used to produce the asset
      */
-    cost: {};
+    cost: Resources;
 
     /**
      * the user friendly name of an asset
@@ -36,15 +35,15 @@ module Sco.Model {
     description: string;
 
     /**
-     * A list of special features that an asset has.
+     * A list of special features that an asset has
      */
-    features: any[];
-  }
+    features: {[id: string]: any};
+}
 
-  /**
-   * asset representing a building
-   */
-  export interface BuildingAsset extends AssetBase {
+/**
+ * asset representing a building
+ */
+export interface BuildingAsset extends AssetBase {
     /**
      * maximum number of buildings of this type in a planet
      */
@@ -61,22 +60,20 @@ module Sco.Model {
     maxPerSystem?: number;
 
     /**
-     * amount of resources produced per turn. The key is the resource id
-     * and the value is the amount
+     * amount of resources produced per turn
      */
-    resourceYield?: {};
+    resourceYield: Resources;
 
     /**
-     * define resource multiplication for the planet the building is on. The
-     * key is the resource id and the value is the amount
+     * define resource multiplication for the planet the building is on
      */
-    resourceMultiplier?: Resource[];
-  }
+    resourceMultiplier: Resources;
+}
 
-  /**
-   * asset representing a unit
-   */
-  export interface UnitAsset extends AssetBase {
+/**
+ * asset representing a unit
+ */
+export interface UnitAsset extends AssetBase {
     /**
      * type of unit
      */
@@ -136,32 +133,32 @@ module Sco.Model {
      * Amount of food consumed by the unit
      */
     foodConsumption: number;
-  }
+}
 
-  export const enum UnitType {
+export const enum UnitType {
     SMALL,
     MEDIUM,
     LARGE,
     HUGE,
     LAND
-  }
+}
 
-  export const enum ArmorType {
+export const enum ArmorType {
     LIGHT,
     MEDIUM,
     HEAVY
-  }
+}
 
-  export const enum WeaponType {
+export const enum WeaponType {
     NORMAL,
     ANTIARMOR,
     BOMBS
-  }
+}
 
-  /**
-   * asset representing a element in the technology tree
-   */
-  export interface TechAsset extends AssetBase {
+/**
+ * asset representing a element in the technology tree
+ */
+export interface TechAsset extends AssetBase {
     /**
      * The level of the element in the tree
      */
@@ -171,12 +168,12 @@ module Sco.Model {
      * the family it belongs to. references TechFamilyAsset.id
      */
     family: string;
-  }
+}
 
-  /**
-   * asset representing a family in the technology tree
-   */
-  export interface TechFamilyAsset {
+/**
+ * asset representing a family in the technology tree
+ */
+export interface TechFamilyAsset {
     /**
      * the name of the family tree
      */
@@ -196,12 +193,12 @@ module Sco.Model {
      * a user readable description of the tree
      */
     description: string;
-  }
+}
 
-  /**
-   * asset representing a type of resource
-   */
-  export interface ResourceTypeAsset {
+/**
+ * asset representing a type of resource
+ */
+export interface ResourceTypeAsset {
     /**
      * the name of the resource
      */
@@ -221,5 +218,4 @@ module Sco.Model {
      * a user readable description of the resource
      */
     description: string;
-  }
 }

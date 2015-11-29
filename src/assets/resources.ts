@@ -1,4 +1,6 @@
-export const resources: Sco.Model.ResourceTypeAsset[] = [
+import * as Sco from '../typedefs/index';
+
+export const resources: Sco.ResourceTypeAsset[] = [
   {
     name: 'Gold',
     color: '#F7F799',

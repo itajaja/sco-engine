@@ -1,4 +1,6 @@
-export const techs: Sco.Model.TechAsset[] = [
+import * as Sco from '../typedefs/index';
+
+export const techs: Sco.TechAsset[] = [
   {
     id: 'tech_galaxyTrade',
     name: 'Galaxy trade',
@@ -221,7 +223,7 @@ export const techs: Sco.Model.TechAsset[] = [
   }
 ];
 
-export const techFamilies: Sco.Model.TechFamilyAsset[] = [
+export const techFamilies: Sco.TechFamilyAsset[] = [
   {
     id: 'techFamily_civil',
     name: 'Civil',
