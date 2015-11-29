@@ -14,29 +14,25 @@ export interface GameState {
   marketState: any; // TODO
 
   /**
-   * State of every planet
+   * State of every planet indexed by cell id
    */
-  planets: PlanetState[];
+  planets: { [id: string]: PlanetState };
 
   /**
-   * State of every unit
+   * State of every unit indexed by unit id
    */
-  units: UnitState[];
+  units: { [id: string]: UnitState };
 
   /**
-   * State of every player
+   * State of every player indexed by player id
    */
-  players: PlayerState[];
+  players: { [id: string]: PlayerState };
 }
 
 /**
  * represent the state of a planet at a given turn
  */
 export interface PlanetState {
-  /**
-   * References Cell.id
-   */
-  planetId: string;
 
   /**
    * current owner of the planet. references Player.id
@@ -54,18 +50,12 @@ export interface PlanetState {
  */
 export interface PlayerState {
   /**
-   * references Player.Id
-   */
-  playerId: string;
-
-  /**
    * current status of the player
    */
   status: PlayerStatus;
 
   /**
-   * current amount of the resources. The key is the value and the value is
-   * the amount
+   * current amount of the resources.
    */
   resourcesAmount: Resources;
 
@@ -88,26 +78,17 @@ export interface PlayerState {
   }[];
 
   /**
-   * represents the current techs developed by the player
+   * represents the current techs (by id) developed by the player.
    */
-  techTree: {
-    /**
-     * reference to Asset.id
-     */
-    techId: string;
-    /**
-     * current level of progress
-     */
-    level: string;
-  }[];
+  techTree: string[];
 }
 
 /**
  * represent if the player is dead or alive, or in another status
  */
 export const enum PlayerStatus {
-  Dead,
-  Alive
+  DEAD,
+  ALIVE
 }
 
 /**
@@ -124,11 +105,6 @@ export interface UnitState {
    * owner of the unit. references Player.id
    */
   ownerId: string;
-
-  /**
-   * unique identifier of the unit
-   */
-  id?: string;
 
   /**
    * reference to Cell.id
